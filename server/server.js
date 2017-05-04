@@ -9,6 +9,7 @@ const assert = require('assert');
 const _ = require('lodash');
 const cookieParser = require('cookie-parser')
 
+var whoamiRoutesV1 = require('./routes/v1/whoamiRoutes');
 
 const publicPath = path.join(__dirname + './../public');
 const port = process.env.PORT;
@@ -35,6 +36,8 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
+
+app.use('/v1/whoami', whoamiRoutesV1);
 
 app.use((req,res) => {
 	res.status(404).send("Page Not Found.");
